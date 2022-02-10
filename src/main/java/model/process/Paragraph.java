@@ -1,4 +1,4 @@
-package model;
+package model.process;
 
 public class Paragraph {
 }

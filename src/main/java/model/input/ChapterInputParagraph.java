@@ -5,10 +5,9 @@ public class ChapterInputParagraph extends InputParagraph {
 		this.num = num;
 	}
 
-	private Integer num;
-
-	@Override
-	public String toParagraph() {
-		return null;
+	public Integer getNum() {
+		return num;
 	}
+
+	private Integer num;
 }

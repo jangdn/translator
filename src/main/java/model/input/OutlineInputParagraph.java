@@ -5,12 +5,9 @@ public class OutlineInputParagraph extends InputParagraph {
 		this.value = value;
 	}
 
-	private String value;
-
-
-	@Override
-	public String toParagraph() {
-		return null;
+	public String getValue() {
+		return value;
 	}
 
+	private String value;
 }
