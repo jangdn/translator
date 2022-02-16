@@ -1,6 +1,8 @@
 package model.process;
 
-public class TitleParagraph extends Paragraph {
+import model.view.Title;
+
+public class TitleParagraph extends Paragraph implements Title {
 	public String getValue() {
 		return value;
 	}
@@ -11,4 +13,8 @@ public class TitleParagraph extends Paragraph {
 		this.value = value;
 	}
 
+	@Override
+	protected String internalToString() {
+		return this.value;
+	}
 }

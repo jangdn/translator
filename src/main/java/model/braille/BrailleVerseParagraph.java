@@ -1,8 +1,9 @@
 package model.braille;
 
 import model.process.Paragraph;
+import model.view.Verse;
 
-public class BrailleVerseParagraph extends BrailleParagraph {
+public class BrailleVerseParagraph extends BrailleParagraph implements Verse {
     private String value;
     private String num;
 
@@ -17,5 +18,10 @@ public class BrailleVerseParagraph extends BrailleParagraph {
 
     public String getNum() {
         return num;
+    }
+
+    @Override
+    protected String internalToString() {
+        return num + " " + value;
     }
 }

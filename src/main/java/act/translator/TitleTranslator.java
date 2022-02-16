@@ -21,7 +21,7 @@ public class TitleTranslator implements Translator<TitleParagraph> {
     }
 
     @Override
-    public Class getMyProcessType() {
+    public Class getMyTranslateType() {
         return TitleParagraph.class;
     }
 }

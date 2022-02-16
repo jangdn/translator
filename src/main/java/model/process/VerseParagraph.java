@@ -1,8 +1,8 @@
 package model.process;
 
-import model.process.Paragraph;
+import model.view.Verse;
 
-public class VerseParagraph extends Paragraph {
+public class VerseParagraph extends Paragraph implements Verse {
     private String value;
     private Integer num;
 
@@ -17,5 +17,10 @@ public class VerseParagraph extends Paragraph {
 
     public Integer getNum() {
         return num;
+    }
+
+    @Override
+    protected String internalToString() {
+        return this.num.toString() + " " + this.value;
     }
 }

@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TranslateDictionary {
-    public static final Map<String, String> totalDictionary = new HashMap<>() {
+    public static final Map<String, String> totalDictionary = new HashMap<String, String>() {
         {
+            put(" ", " ");
+
             // special sign
             put(".", "\u2832");
             put(",", "\u2802");
@@ -115,7 +117,7 @@ public class TranslateDictionary {
         }
     };
 
-    public static final Map<String, String> specialSignDictionary = new HashMap<>() {
+    public static final Map<String, String> specialSignDictionary = new HashMap<String, String>() {
         {
             // special sign
             put(".", "\u2832");
@@ -132,7 +134,7 @@ public class TranslateDictionary {
     };
 
     public static final String START_NUMBER_SIGN = "\u283c";
-    public static final Map<String, String> numberDictionary = new HashMap<>() {
+    public static final Map<String, String> numberDictionary = new HashMap<String, String>() {
         {
             // number
             put("1", "\u2801");
@@ -150,7 +152,7 @@ public class TranslateDictionary {
     };
 
     public static final String START_BIG_ALPHABET_SIGN = "\u2828";
-    public static final Map<String, String> bigAlphabetDictionary = new HashMap<>() {
+    public static final Map<String, String> bigAlphabetDictionary = new HashMap<String, String>() {
         {
             // alphabet
             put("\u0430", "\u2801");
@@ -197,7 +199,7 @@ public class TranslateDictionary {
         }
     };
 
-    public static final Map<String, String> smallAlphabetDictionary = new HashMap<>() {
+    public static final Map<String, String> smallAlphabetDictionary = new HashMap<String, String>() {
         {
             // alphabet
             put("\u0410", "\u2801");

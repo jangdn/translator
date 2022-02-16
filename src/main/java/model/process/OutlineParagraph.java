@@ -1,6 +1,8 @@
 package model.process;
 
-public class OutlineParagraph extends Paragraph {
+import model.view.Outline;
+
+public class OutlineParagraph extends Paragraph implements Outline {
 	public OutlineParagraph(String value) {
 		this.value = value;
 	}
@@ -10,4 +12,9 @@ public class OutlineParagraph extends Paragraph {
 	}
 
 	private String value;
+
+	@Override
+	protected String internalToString() {
+		return this.value;
+	}
 }

@@ -1,0 +1,125 @@
+{
+  "title": "테스트 권 제목",
+  "subtitle": "권 소제목",
+  "description": "서론 문단 1입니다. 길게 한번 써보겠습니다. 조금 더 길게 써보겠습니다. 이 정도면 충분할 것 같습니다.\n서론 문단 2입니다. 이번엔 짧게 해보겠습니다.\n서론 문단 3입니다. 이번엔 짧게.",
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verses": [
+        {
+          "verseNumber": "1",
+          "content": "1절의 내용입니다. 줄바꿈되어 있습니다."
+        },
+        {
+          "verseNumber": "2",
+          "content": "2절의 내용인데 줄바꿈 안 되어있음. "
+        },
+        {
+          "verseNumber": "3",
+          "content": "3절의 내용입니다. "
+        },
+        {
+          "verseNumber": "4",
+          "content": "4절의 내용입니다. "
+        },
+        {
+          "verseNumber": "5",
+          "content": "5절의 내용입니다. "
+        },
+        {
+          "verseNumber": "6",
+          "content": "6절은 중간에 줄바꿈이 들어갑니다.6절의 줄바꿈 이후 내용입니다. "
+        },
+        {
+          "verseNumber": "7",
+          "content": "7절의 내용입니다. "
+        },
+        {
+          "verseNumber": "11",
+          "content": "11절의 내용인데 [footnoteRef:1]b 각주가 들어있습니다."
+        },
+        {
+          "verseNumber": "12",
+          "content": "12절의 내용입니다."
+        },
+        {
+          "verseNumber": "18",
+          "content": "18절입니다. "
+        },
+        {
+          "verseNumber": "19",
+          "content": "19절입니다. "
+        },
+        {
+          "verseNumber": "20",
+          "content": "20절입니다:–20절 후반입니다."
+        },
+        {
+          "verseNumber": "23",
+          "content": "23절은 인용문이라 기울임이 있고 색이 다릅니다[footnoteRef:2]d.여기까지 23절입니다."
+        },
+        {
+          "verseNumber": "24",
+          "content": "24절입니다. "
+        },
+        {
+          "verseNumber": "25",
+          "content": "25절입니다."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 2,
+      "verses": [
+        {
+          "verseNumber": "1",
+          "content": "1절입니다:"
+        },
+        {
+          "verseNumber": "2",
+          "content": "– 2절입니다"
+        },
+        {
+          "verseNumber": "3",
+          "content": "3절입니다 "
+        },
+        {
+          "verseNumber": "4",
+          "content": "4절입니다."
+        },
+        {
+          "verseNumber": "12",
+          "content": "12절입니다."
+        },
+        {
+          "verseNumber": "13",
+          "content": "13절입니다.– 13절의 뒷부분입니다."
+        },
+        {
+          "verseNumber": "14",
+          "content": "14절입니다. "
+        },
+        {
+          "verseNumber": "15",
+          "content": "15절입니다: «15절의 인용문입니다.»[footnoteRef:3]h, – 15절 뒷부분입니다."
+        },
+        {
+          "verseNumber": "16",
+          "content": "16절입니다. "
+        },
+        {
+          "verseNumber": "17",
+          "content": "17절입니다:"
+        },
+        {
+          "verseNumber": "18",
+          "content": "«18절 인용문입니다,인용문 2줄.인용문 3줄.인용문 4줄»[footnoteRef:4]i."
+        },
+        {
+          "verseNumber": "19",
+          "content": "19절 끝"
+        }
+      ]
+    }
+  ]
+}

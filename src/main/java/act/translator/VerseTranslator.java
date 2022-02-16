@@ -26,7 +26,7 @@ public class VerseTranslator implements Translator<VerseParagraph> {
     }
 
     @Override
-    public Class getMyProcessType() {
-        return TitleInputParagraph.class;
+    public Class getMyTranslateType() {
+        return VerseParagraph.class;
     }
 }

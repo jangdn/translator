@@ -1,6 +1,8 @@
 package model.process;
 
-public class SubtitleParagraph extends Paragraph {
+import model.view.Subtitle;
+
+public class SubtitleParagraph extends Paragraph implements Subtitle {
 	public SubtitleParagraph(String value) {
 		this.value = value;
 	}
@@ -10,4 +12,9 @@ public class SubtitleParagraph extends Paragraph {
 	}
 
 	private String value;
+
+	@Override
+	protected String internalToString() {
+		return this.value;
+	}
 }

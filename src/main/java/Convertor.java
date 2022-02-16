@@ -1,36 +1,60 @@
-import act.Parser;
-import act.translator.TranslateHandler;
+import act.parse.ParameterParser;
 import act.processor.ProcessorHandler;
+import act.translator.TranslateHandler;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.braille.BrailleParagraph;
 import model.input.*;
+import model.parameter.InputParameterParagraph;
 import model.process.Paragraph;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Convertor {
-	public static void main(String[] args) {
-		Parser parser = new Parser();
 
-		List<InputParagraph> inputParagraphs = new ArrayList<InputParagraph>();
-		inputParagraphs.add(new TitleInputParagraph("마가복음"));
-		inputParagraphs.add(new OutlineInputParagraph("마가복음은 이러저러하다."));
-		inputParagraphs.add(new ChapterInputParagraph(1));
-		inputParagraphs.add(new VerseInputParagraph(1, "하나님의 아들 예수 그리스도 복음의 시작이라"));
-		inputParagraphs.add(new VerseInputParagraph(2, "선지자 이사야의 글에 보라 내가 내 사자를 네 앞에 보내노니 저가 네 길을 예비하리라"));
+    private static final String DEFINED_CONVERT_TARGET = "main-test.json";
 
-		ProcessorHandler processorHandler = ProcessorHandler.getInstance();
-		List<Paragraph> paragraphs = inputParagraphs.parallelStream()
-				.map(inputParagraph -> processorHandler.process(inputParagraph))
-				.collect(Collectors.toList());
+    public static void main(String[] args) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ClassLoader classLoader = Convertor.class.getClassLoader();
+        File file = new File(classLoader.getResource(DEFINED_CONVERT_TARGET).getFile());
 
-		TranslateHandler translateHandler = TranslateHandler.getInstance();
-		List<BrailleParagraph> brailleParagraphs = paragraphs.parallelStream()
-				.map(paragraph -> translateHandler.translate(paragraph))
-				.collect(Collectors.toList());
+        List<InputParagraph> inputParagraphs = ParameterParser.getInstance()
+                .parse(objectMapper.readValue(file, InputParameterParagraph.class));
 
-		System.out.println(brailleParagraphs);
+        ProcessorHandler processorHandler = ProcessorHandler.getInstance();
+        List<Paragraph> paragraphs = inputParagraphs.parallelStream()
+                .map(inputParagraph -> processorHandler.process(inputParagraph))
+                .collect(Collectors.toList());
 
-	}
+        StringBuilder paragraphBuilder = new StringBuilder();
+        for (Paragraph paragraph : paragraphs) {
+            paragraphBuilder.append(paragraph.toString());
+        }
+
+        try(FileWriter myWriter = new FileWriter("sourceParagraphs.txt")) {
+            myWriter.write(paragraphBuilder.toString());
+        }
+
+        TranslateHandler translateHandler = TranslateHandler.getInstance();
+        List<BrailleParagraph> brailleParagraphs = paragraphs.parallelStream()
+                .map(paragraph -> translateHandler.translate(paragraph))
+                .collect(Collectors.toList());
+
+        StringBuilder brailleBuilder = new StringBuilder();
+        for (BrailleParagraph brailleParagraph : brailleParagraphs) {
+            brailleBuilder.append(brailleParagraph.toString());
+        }
+
+        try(FileWriter myWriter = new FileWriter("brailleParagraphs.txt")) {
+            myWriter.write(brailleBuilder.toString());
+        }
+
+        System.out.println(brailleParagraphs);
+
+    }
 }

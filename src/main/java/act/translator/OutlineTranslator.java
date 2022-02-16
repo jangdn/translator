@@ -21,7 +21,7 @@ public class OutlineTranslator implements Translator<OutlineParagraph> {
     }
 
     @Override
-    public Class getMyProcessType() {
+    public Class getMyTranslateType() {
         return OutlineParagraph.class;
     }
 }

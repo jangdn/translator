@@ -21,7 +21,7 @@ public class ChapterTranslator implements Translator<ChapterParagraph> {
     }
 
     @Override
-    public Class getMyProcessType() {
+    public Class getMyTranslateType() {
         return ChapterParagraph.class;
     }
 }

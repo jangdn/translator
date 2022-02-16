@@ -1,8 +1,6 @@
 package act.translator;
 
-import act.processor.*;
 import model.braille.BrailleParagraph;
-import model.input.InputParagraph;
 import model.process.Paragraph;
 
 import java.util.ArrayList;
@@ -30,7 +28,7 @@ public class TranslateHandler {
 
 	public BrailleParagraph translate(Paragraph paragraph) {
 		for (Translator translator : this.translators) {
-			if (translator.getMyProcessType().equals(paragraph.getClass())) {
+			if (translator.getMyTranslateType().equals(paragraph.getClass())) {
 				return translator.translate(paragraph);
 			}
 		}

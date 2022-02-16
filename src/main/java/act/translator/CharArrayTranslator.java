@@ -7,8 +7,9 @@ public class CharArrayTranslator {
         }
 
         char beforeValue = input.charAt(0);
-        char[] chars = input.substring(1).toCharArray();
         StringBuilder builder = new StringBuilder();
+        appendBraille(builder, beforeValue);
+        char[] chars = input.substring(1).toCharArray();
         for (char c : chars) {
             if (isNumber(c)) {
                 if (isContinuouslyNumber(beforeValue, c)) {
@@ -21,6 +22,14 @@ public class CharArrayTranslator {
             builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
         }
         return builder.toString();
+    }
+
+    private static void appendBraille(StringBuilder builder, char c) {
+        if (isNumber(c)) {
+            builder.append(TranslateDictionary.START_NUMBER_SIGN);
+            builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+        }
+        builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
     }
 
     private static boolean isNumber(char c) {

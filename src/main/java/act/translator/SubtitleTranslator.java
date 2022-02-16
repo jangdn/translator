@@ -23,7 +23,7 @@ public class SubtitleTranslator implements Translator<SubtitleParagraph> {
     }
 
     @Override
-    public Class getMyProcessType() {
+    public Class getMyTranslateType() {
         return SubtitleParagraph.class;
     }
 }

@@ -1,6 +1,8 @@
 package model.process;
 
-public class ChapterParagraph extends Paragraph {
+import model.view.Chapter;
+
+public class ChapterParagraph extends Paragraph implements Chapter {
 	public ChapterParagraph(Integer num) {
 		this.num = num;
 	}
@@ -11,4 +13,8 @@ public class ChapterParagraph extends Paragraph {
 
 	private Integer num;
 
+	@Override
+	protected String internalToString() {
+		return this.num.toString();
+	}
 }
