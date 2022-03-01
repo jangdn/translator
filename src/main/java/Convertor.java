@@ -3,10 +3,9 @@ import act.processor.ProcessorHandler;
 import act.translator.TranslateHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.braille.BrailleParagraph;
-import model.input.*;
+import model.input.InputParagraph;
 import model.parameter.InputParameterParagraph;
 import model.process.Paragraph;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,6 +18,10 @@ public class Convertor {
     private static final String DEFINED_CONVERT_TARGET = "main-test.json";
 
     public static void main(String[] args) throws IOException {
+        convert();
+    }
+
+    public static void convert() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         ClassLoader classLoader = Convertor.class.getClassLoader();
         File file = new File(classLoader.getResource(DEFINED_CONVERT_TARGET).getFile());
@@ -53,8 +56,5 @@ public class Convertor {
         try(FileWriter myWriter = new FileWriter("brailleParagraphs.txt")) {
             myWriter.write(brailleBuilder.toString());
         }
-
-        System.out.println(brailleParagraphs);
-
     }
 }

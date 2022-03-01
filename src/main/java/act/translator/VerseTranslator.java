@@ -1,10 +1,6 @@
 package act.translator;
 
-import act.processor.Processor;
-import model.braille.BrailleTitleParagraph;
 import model.braille.BrailleVerseParagraph;
-import model.input.TitleInputParagraph;
-import model.process.TitleParagraph;
 import model.process.VerseParagraph;
 
 public class VerseTranslator implements Translator<VerseParagraph> {

@@ -28,6 +28,7 @@ public class CharArrayTranslator {
         if (isNumber(c)) {
             builder.append(TranslateDictionary.START_NUMBER_SIGN);
             builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+            return ;
         }
         builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
     }
