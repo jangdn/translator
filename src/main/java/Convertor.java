@@ -53,8 +53,9 @@ public class Convertor {
             brailleBuilder.append(brailleParagraph.toString());
         }
 
+        String str = brailleBuilder.toString();
         try(FileWriter myWriter = new FileWriter("brailleParagraphs.txt")) {
-            myWriter.write(brailleBuilder.toString());
+            myWriter.write(LineConverter.convert(str));
         }
     }
 }
