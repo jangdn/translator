@@ -1,13 +1,13 @@
 package model.input;
 
 public class ChapterInputParagraph extends InputParagraph {
-	public ChapterInputParagraph(Integer num) {
+	public ChapterInputParagraph(String num) {
 		this.num = num;
 	}
 
-	public Integer getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	private Integer num;
+	private String num;
 }

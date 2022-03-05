@@ -1,7 +1,7 @@
 package model.input;
 
 public class VerseInputParagraph extends InputParagraph {
-	public VerseInputParagraph(Integer num, String value) {
+	public VerseInputParagraph(String num, String value) {
 		this.value = value;
 		this.num = num;
 	}
@@ -10,11 +10,11 @@ public class VerseInputParagraph extends InputParagraph {
 		return value;
 	}
 
-	public Integer getNum() {
+	public String getNum() {
 		return num;
 	}
 
 	private String value;
 
-	private Integer num;
+	private String num;
 }

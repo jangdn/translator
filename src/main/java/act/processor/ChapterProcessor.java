@@ -1,6 +1,5 @@
 package act.processor;
 
-import act.processor.versechain.*;
 import model.input.ChapterInputParagraph;
 import model.process.ChapterParagraph;
 

@@ -17,6 +17,7 @@ public class ProcessorHandler {
         this.processors.add(OutlineProcessor.getInstance());
         this.processors.add(SubtitleProcessor.getInstance());
         this.processors.add(TitleProcessor.getInstance());
+        this.processors.add(SummaryProcessor.getInstance());
     }
 
     private static class LazyHolder {

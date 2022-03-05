@@ -1,5 +1,11 @@
 package model.parameter;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.input.InputParagraph;
+import model.input.SummaryInputParagraph;
+import model.input.VerseInputParagraph;
+
 import java.util.List;
 
 public class InputParameterParagraph {
@@ -35,32 +41,71 @@ public class InputParameterParagraph {
     }
 
     public static class ChapterParameter {
-        private Integer chapterNumber;
-        private List<VerseParameter> verses;
+        private String chapterNumber;
+        private List<VerseGroupParameter> versesOrSummaries;
 
-        public ChapterParameter(Integer chapterNumber, List<VerseParameter> verses) {
+        public ChapterParameter(String chapterNumber, List<VerseGroupParameter> versesOrSummaries) {
             this.chapterNumber = chapterNumber;
-            this.verses = verses;
+            this.versesOrSummaries = versesOrSummaries;
         }
 
         public ChapterParameter() {
         }
 
-        public Integer getChapterNumber() {
+        public String getChapterNumber() {
             return chapterNumber;
         }
 
-        public List<VerseParameter> getVerses() {
-            return verses;
+        public List<VerseGroupParameter> getVersesOrSummaries() {
+            return versesOrSummaries;
         }
     }
 
+    @JsonTypeInfo(
+            use = JsonTypeInfo.Id.NAME,
+            include = JsonTypeInfo.As.PROPERTY,
+            property = "@type")
+    @JsonSubTypes({
+            @JsonSubTypes.Type(value = SummaryParameter.class, name = "SUMMARY"),
+            @JsonSubTypes.Type(value = VerseParameter.class, name = "VERSE")
+    })
+    public abstract static class VerseGroupParameter {
+        protected VerseGroupParameter() {
+        }
+        public abstract InputParagraph toInputParagraph();
+    }
 
-    public static class VerseParameter {
-        private Integer verseNumber;
+    public static class SummaryParameter extends VerseGroupParameter {
+        private String title;
+        private String subtitle;
+
+        public SummaryParameter(String title, String subtitle) {
+            this.title = title;
+            this.subtitle = subtitle;
+        }
+
+        public SummaryParameter() {
+        }
+
+        @Override
+        public InputParagraph toInputParagraph() {
+            return new SummaryInputParagraph(this.title, this.subtitle);
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getSubtitle() {
+            return subtitle;
+        }
+    }
+
+    public static class VerseParameter extends VerseGroupParameter {
+        private String verseNumber;
         private String content;
 
-        public VerseParameter(Integer verseNumber, String content) {
+        public VerseParameter(String verseNumber, String content) {
             this.verseNumber = verseNumber;
             this.content = content;
         }
@@ -68,7 +113,12 @@ public class InputParameterParagraph {
         public VerseParameter() {
         }
 
-        public Integer getVerseNumber() {
+        @Override
+        public InputParagraph toInputParagraph() {
+            return new VerseInputParagraph(this.verseNumber, content);
+        }
+
+        public String getVerseNumber() {
             return verseNumber;
         }
 

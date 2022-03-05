@@ -3,15 +3,15 @@ package model.process;
 import model.view.Chapter;
 
 public class ChapterParagraph extends Paragraph implements Chapter {
-	public ChapterParagraph(Integer num) {
+	public ChapterParagraph(String num) {
 		this.num = num;
 	}
 
-	public Integer getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	private Integer num;
+	private String num;
 
 	@Override
 	protected String internalToString() {

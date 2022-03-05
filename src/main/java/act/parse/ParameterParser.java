@@ -3,7 +3,6 @@ package act.parse;
 import model.input.*;
 import model.parameter.InputParameterParagraph;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,8 +17,8 @@ public class ParameterParser {
         inputParagraphs.add(new OutlineInputParagraph(parameterParagraph.getDescription()));
         for (InputParameterParagraph.ChapterParameter chapter : parameterParagraph.getChapters()) {
             inputParagraphs.add(new ChapterInputParagraph(chapter.getChapterNumber()));
-            for (InputParameterParagraph.VerseParameter verse : chapter.getVerses()) {
-                inputParagraphs.add(new VerseInputParagraph(verse.getVerseNumber(), verse.getContent()));
+            for (InputParameterParagraph.VerseGroupParameter verse : chapter.getVersesOrSummaries()) {
+                inputParagraphs.add(verse.toInputParagraph());
             }
         }
         return inputParagraphs;

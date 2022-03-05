@@ -1,8 +1,6 @@
 import act.processor.ProcessorHandler;
-import act.translator.TranslateHandler;
-import model.braille.BrailleParagraph;
 import model.input.InputParagraph;
-import model.input.VerseInputParagraph;
+import model.input.SummaryInputParagraph;
 import model.process.Paragraph;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
@@ -12,14 +10,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class TranslateTest {
     @Test
     @DisplayName("???? 6? ?? ???")
     public void translateTest1() throws UnsupportedEncodingException {
-        List<InputParagraph> inputParagraphs = Lists.newArrayList(getMattaSix());
+        List<InputParagraph> inputParagraphs = Lists.newArrayList(getTest1());
 
         ProcessorHandler processorHandler = ProcessorHandler.getInstance();
         List<Paragraph> paragraphs = inputParagraphs.parallelStream()
@@ -30,29 +25,13 @@ public class TranslateTest {
         for (Paragraph paragraph : paragraphs) {
             paragraphBuilder.append(paragraph.toString());
         }
-
-        TranslateHandler translateHandler = TranslateHandler.getInstance();
-        List<BrailleParagraph> brailleParagraphs = paragraphs.parallelStream()
-                .map(paragraph -> translateHandler.translate(paragraph))
-                .collect(Collectors.toList());
-
-        StringBuilder brailleBuilder = new StringBuilder();
-        for (BrailleParagraph brailleParagraph : brailleParagraphs) {
-            brailleBuilder.append(brailleParagraph.toString());
-        }
         byte[] answerByte = getBrailleMattaSix().getBytes("UTF-16");
-        byte[] transByte = brailleBuilder.toString().getBytes("UTF-16");
-        assertArrayEquals(answerByte, transByte);
     }
 
 
-    private List<InputParagraph> getMattaSix() {
+    private List<InputParagraph> getTest1() {
         return Lists.newArrayList(
-                new VerseInputParagraph(5, "?¬¥¬å?¬Ñ¬Ö¬ä¬Ü¬Ö¬ß¬Ú?¬Ú¬Ù¬Õ¬Ö,¬Ñ¬Õ¬Ñ¬Þ¬Ý¬Ñ¬â?¬Ñ¬Ü?¬â¬ã¬Ö¬ä¬Ú?¬å¬ê¬í¬ß¬Þ?¬Ø¬Ú¬Ý¬Ú¬ã¬ç¬Ñ¬ß¬Ñ¬Ý¬Ñ¬â¬Õ¬Ñ??¬Þ¬Ü?¬ê¬Ö¬Ý¬Ö¬â¬Õ¬Ú?¬Þ?¬Û¬Ö¬ê¬Ý¬Ö¬â¬Ú¬ß¬Õ¬Ö¬ä¬å¬â¬í¬á¬Õ¬å?¬Ñ¬Ö¬ä¬Ú?¬Õ¬Ú¬Ø¬Ñ?¬ã¬í¬Ü?¬â¬Ö¬ä¬å?¬í¬ß¬Ö¬Ü¬Ú¬Ø?¬Ù¬Ý¬Ú¬Ý¬Ö¬â¬ã¬í¬ñ?¬Ý¬í¬Ò¬à¬Ý¬Þ¬Ñ?¬Ý¬Ñ¬â.¬³¬Ú¬Ù¬Ý¬Ö¬â¬Ô¬Ö¬ê¬í¬ß¬í¬ß¬Ñ¬Û¬ä¬í¬á¬ä¬å¬â¬Þ¬Ñ¬ß:¬à¬Ý¬Ñ¬â?¬Ý¬Ý¬Ö?¬Ñ¬ê¬Ñ¬ß?¬Ù¬ã¬í¬Û¬Ý¬Ñ¬â¬í¬ß¬Ñ¬Ý¬í¬á¬Ò¬à¬Ý¬Õ¬í."),
-                new VerseInputParagraph(6, "¬¡¬Ý¬ã¬Ö¬ß¬Õ¬å?¬Ñ¬Ö¬ä¬Ü¬Ö¬ß¬Ú?¬Õ¬Ö¬Ò?¬Ý¬Þ¬Ö?¬Ö¬Ü¬Ú¬â¬Ú¬á,¬Ö¬ã¬Ú¬Ô¬Ú?¬Õ¬Ú¬Ø¬Ñ¬á?¬Ñ¬ß¬í?¬ß¬Ñ¬ß¬ã¬à?,¬Ü?¬Ù¬Ô¬Ö¬Ü?¬â¬Ú¬ß¬Ò¬Ö¬Û¬ä¬å?¬í¬ß?¬Ü¬Ö?¬Ö¬Õ¬å?¬Ñ¬Ö¬ä!¬³¬à¬ß¬Õ¬Ñ¬Ø¬Ñ¬ã¬í¬â¬í¬ß¬Ý¬í?¬ä¬í¬Ü?¬â¬Ú?¬ê¬Ú?¬Ü¬Ö?¬ã¬Ñ?¬Ñ¬ß?¬Ñ¬Û¬ä¬Ñ¬â¬Ñ¬Õ¬í."),
-                new VerseInputParagraph(7, "¬¥¬å?¬Ñ¬Ö¬ä¬Ü¬Ö¬ß¬Ú?¬Ú¬Ù¬Õ¬Ö,¬Ò¬å¬ä?¬Ñ¬ä¬Ñ¬Ò¬í¬ß¬í?¬ê¬í¬Ý¬Ñ¬â¬ã¬í¬ñ?¬Ý¬í¬Þ¬í¬Ý¬Ø¬í??¬Ñ¬Ò¬Ö¬â¬Ú¬Ý¬Þ¬Ö?¬Ý¬Ö¬â.¬°¬Ý¬Ñ¬â¬Ü?¬á¬ã?¬Û¬Ý¬Ö¬ã¬Ö¬Ü¬ä¬í?¬Ý¬Ñ¬â¬Õ¬Ö¬á¬à¬Û¬Ý¬Ñ¬Û¬Õ¬í."),
-                new VerseInputParagraph(8, "¬³¬Ú¬Ù¬Ý¬Ö¬â¬à¬Ý¬Ñ¬â?¬Ñ¬å?¬ã¬Ñ¬Þ¬Ñ?¬Ý¬Ñ¬â.¬³¬Ö¬Ò¬Ö¬Ò¬Ú?¬Ü¬Ö?¬Ú¬Ù¬ß¬Ö¬Ô¬Ö¬Þ?¬ä?¬Ø¬Ö¬Ü¬Ö¬ß¬Ý¬Ú¬Ô¬Ú?¬Ú¬Ù¬Õ¬Ú¬°¬ß¬ß¬Ñ¬ß¬ã¬à¬â¬Ñ¬Þ¬Ñ¬ã¬í?¬í¬Ù¬Õ¬Ñ¬ß¬Ñ¬Ý¬Õ¬í¬ß¬Ò¬Ú¬Ý¬Ö¬Õ¬Ú."),
-                new VerseInputParagraph(9, "¬³¬à¬ß¬Ý¬í?¬ä¬Ñ¬ß¬ã¬Ú¬Ù¬Ý¬Ö¬â¬Ò¬í¬Ý¬Ñ¬Û¬Õ¬Ö¬á¬Õ¬å?¬Ñ¬Ö¬ä¬Ú?¬Ý¬Ö¬â:")
+                new SummaryInputParagraph("¬ª¬Û¬ã¬Ñ ¬®¬Ñ¬ã¬Ú¬Û¬ç¬ä¬í? ¬ê¬Ö¬Ø¬Ú¬â¬Ö¬ã¬Ú", "¬­¬å¬Ü 3:23-38")
         );
     }
 

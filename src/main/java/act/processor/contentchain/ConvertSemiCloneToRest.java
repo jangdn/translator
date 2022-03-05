@@ -1,9 +1,9 @@
-package act.processor.versechain;
+package act.processor.contentchain;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ConvertSemiCloneToRest implements VerseConvertorChain {
-    private VerseConvertorChain nextChain;
+public class ConvertSemiCloneToRest implements ContentConvertorChain {
+    private ContentConvertorChain nextChain;
 
     private ConvertSemiCloneToRest() {
     }
@@ -18,15 +18,13 @@ public class ConvertSemiCloneToRest implements VerseConvertorChain {
 
     @Override
     public String process(String value) {
-        if (nextChain == null) {
-            return StringUtils.remove(value, "#");
-        }
+        String result = StringUtils.replace(value, ";", ",");
 
-        return nextChain.process(StringUtils.replace(value, ";", ","));
+        return nextChain.process(result);
     }
 
     @Override
-    public void setNext(VerseConvertorChain verseConvertorChain) {
-        this.nextChain = verseConvertorChain;
+    public void setNext(ContentConvertorChain contentConvertorChain) {
+        this.nextChain = contentConvertorChain;
     }
 }

@@ -1,13 +1,16 @@
 package act.processor;
 
 import act.processor.contentchain.*;
-import model.input.OutlineInputParagraph;
-import model.process.OutlineParagraph;
+import model.input.SummaryInputParagraph;
+import model.input.VerseInputParagraph;
+import model.process.Paragraph;
+import model.process.SummaryParagraph;
+import model.view.Summary;
 
-public class OutlineProcessor implements Processor<OutlineInputParagraph> {
+public class SummaryProcessor implements Processor<SummaryInputParagraph>{
     private final ContentConvertorChain startChanContentConvertorChain;
 
-    private OutlineProcessor(ConvertShapSign convertShapSign,
+    private SummaryProcessor(ConvertShapSign convertShapSign,
                              ConvertQuoteSign convertQuoteSign,
                              ConvertSquareBrackets convertSquareBrackets,
                              ConvertParenthesisToHyphen convertParenthesisToHyphen,
@@ -24,8 +27,8 @@ public class OutlineProcessor implements Processor<OutlineInputParagraph> {
     }
 
     private static class LazyHolder {
-        public static final OutlineProcessor INSTANCE =
-                new OutlineProcessor(ConvertShapSign.getInstance(),
+        public static final SummaryProcessor INSTANCE =
+                new SummaryProcessor(ConvertShapSign.getInstance(),
                         ConvertQuoteSign.getInstance(),
                         ConvertSquareBrackets.getInstance(),
                         ConvertParenthesisToHyphen.getInstance(),
@@ -34,17 +37,17 @@ public class OutlineProcessor implements Processor<OutlineInputParagraph> {
                         FixStrangeString.getInstance());
     }
 
-    public static OutlineProcessor getInstance() {
-        return OutlineProcessor.LazyHolder.INSTANCE;
+    public static SummaryProcessor getInstance() {
+        return SummaryProcessor.LazyHolder.INSTANCE;
     }
 
-    @Override
-    public OutlineParagraph process(OutlineInputParagraph inputParagraph) {
-        return new OutlineParagraph(this.startChanContentConvertorChain.process(inputParagraph.getValue()));
+    public Paragraph process(SummaryInputParagraph inputParagraph) {
+        return new SummaryParagraph(this.startChanContentConvertorChain.process(inputParagraph.getSubtitle()),
+                this.startChanContentConvertorChain.process(inputParagraph.getTitle()));
     }
 
     @Override
     public Class getMyProcessType() {
-        return OutlineInputParagraph.class;
+        return SummaryInputParagraph.class;
     }
 }

@@ -4,9 +4,9 @@ import model.view.Verse;
 
 public class VerseParagraph extends Paragraph implements Verse {
     private String value;
-    private Integer num;
+    private String num;
 
-    public VerseParagraph(String value, Integer num) {
+    public VerseParagraph(String value, String num) {
         this.value = value;
         this.num = num;
     }
@@ -15,7 +15,7 @@ public class VerseParagraph extends Paragraph implements Verse {
         return value;
     }
 
-    public Integer getNum() {
+    public String getNum() {
         return num;
     }
 
