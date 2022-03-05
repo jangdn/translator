@@ -13,24 +13,24 @@ public class CharArrayTranslator {
         for (char c : chars) {
             if (isNumber(c)) {
                 if (isContinuouslyNumber(beforeValue, c)) {
-                    builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+                    builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
                     continue;
                 }
-                builder.append(TranslateDictionary.START_NUMBER_SIGN);
-                builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+                builder.append(TranslateDictionary.START_NUMBER_SIGN_ASC.getString());
+                builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
             }
-            builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+            builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
         }
         return builder.toString();
     }
 
     private static void appendBraille(StringBuilder builder, char c) {
         if (isNumber(c)) {
-            builder.append(TranslateDictionary.START_NUMBER_SIGN);
-            builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+            builder.append(TranslateDictionary.START_NUMBER_SIGN_ASC.getString());
+            builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
             return ;
         }
-        builder.append(TranslateDictionary.totalDictionary.get(String.valueOf(c)));
+        builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
     }
 
     private static boolean isNumber(char c) {

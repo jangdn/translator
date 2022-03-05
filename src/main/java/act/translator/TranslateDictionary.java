@@ -1,9 +1,10 @@
 package act.translator;
 
-import org.apache.commons.lang3.StringUtils;
+import act.translator.character.CharacterElement;
+import act.translator.character.CharacterGetter;
+import act.translator.character.CharacterList;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -120,6 +121,122 @@ public class TranslateDictionary {
             put("\u042f", "\u282b");
         }
     };
+    public static final Map<String, CharacterGetter> totalDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            put(" ", new CharacterElement(' '));
+
+            // special sign
+            put(".", new CharacterElement((char) 0x34)); // ⠲
+            put(",", new CharacterElement((char) 0x31)); // ⠂
+            put(":", new CharacterElement((char) 0x33)); // ⠒
+            put("\u2013", new CharacterElement((char) 0x2D)); // – ⠤
+            put("!", new CharacterElement((char) 0x36)); // ⠖
+            put("?", new CharacterElement((char) 0x35)); // ⠢
+            put("[", new CharacterList((Character[]) Arrays.asList((char) 0x2C, (char) 0x37).toArray())); // ⠠⠶
+            put("]", new CharacterList((Character[]) Arrays.asList((char) 0x37, (char) 0x2C).toArray())); // ⠶⠠
+            put("„", new CharacterList((Character[]) Arrays.asList((char) 0x2C, (char) 0x38).toArray())); // ⠠⠦
+            put("“", new CharacterList((Character[]) Arrays.asList((char) 0x30, (char) 0x27).toArray())); // ⠴⠄
+
+            // number
+            put("1", new CharacterElement((char) 0x31));
+            put("2", new CharacterElement((char) 0x32));
+            put("3", new CharacterElement((char) 0x33));
+            put("4", new CharacterElement((char) 0x34));
+            put("5", new CharacterElement((char) 0x35));
+            put("6", new CharacterElement((char) 0x36));
+            put("7", new CharacterElement((char) 0x37));
+            put("8", new CharacterElement((char) 0x38));
+            put("9", new CharacterElement((char) 0x39));
+            put("0", new CharacterElement((char) 0x30));
+
+            // big alphabet
+            put("\u0430", new CharacterElement((char) 0x41));
+            put("\u04d9", new CharacterElement((char) 0x3E));
+            put("\u0431", new CharacterElement((char) 0x42));
+            put("\u0432", new CharacterElement((char) 0x57));
+            put("\u0433", new CharacterElement((char) 0x47));
+            put("\u0434", new CharacterElement((char) 0x44));
+            put("\u0493", new CharacterElement((char) 0x5D));
+            put("\u0435", new CharacterElement((char) 0x45));
+            put("\u0451", new CharacterElement((char) 0x2A));
+            put("\u0436", new CharacterElement((char) 0x4A));
+            put("\u0437", new CharacterElement((char) 0x5A));
+            put("\u0438", new CharacterElement((char) 0x49));
+            put("\u0439", new CharacterElement((char) 0x26));
+            put("\u043a", new CharacterElement((char) 0x4B));
+            put("\u049b", new CharacterElement((char) 0x59));
+            put("\u043b", new CharacterElement((char) 0x4C));
+            put("\u043c", new CharacterElement((char) 0x4D));
+            put("\u043d", new CharacterElement((char) 0x4E));
+            put("\u04a3", new CharacterElement((char) 0x25));
+            put("\u043e", new CharacterElement((char) 0x4F));
+            put("\u04e9", new CharacterElement((char) 0x3C));
+            put("\u043f", new CharacterElement((char) 0x50));
+            put("\u0440", new CharacterElement((char) 0x52));
+            put("\u0441", new CharacterElement((char) 0x53));
+            put("\u0442", new CharacterElement((char) 0x54));
+            put("\u04af", new CharacterElement((char) 0x2F));
+            put("\u0443", new CharacterElement((char) 0x55));
+            put("\u045e", new CharacterElement((char) 0x56));
+            put("\u0444", new CharacterElement((char) 0x46));
+            put("\u0445", new CharacterElement((char) 0x48));
+            put("\u04b3", new CharacterElement((char) 0x3F));
+            put("\u0446", new CharacterElement((char) 0x43));
+            put("\u0447", new CharacterElement((char) 0x51));
+            put("\u0448", new CharacterElement((char) 0x3A));
+            put("\u0449", new CharacterElement((char) 0x58));
+            put("\u044a", new CharacterElement((char) 0x28));
+            put("\u044b", new CharacterElement((char) 0x21));
+            put("\u044c", new CharacterElement((char) 0x29));
+            put("\u044d", new CharacterElement((char) 0x5B));
+            put("\u044e", new CharacterElement((char) 0x5C));
+            put("\u044f", new CharacterElement((char) 0x24));
+
+            // small alphabet
+            put("\u0410", new CharacterElement((char) 0x41));  // А  : ⠁
+            put("\u04d8", new CharacterElement((char) 0x3E)); // Ә  : ⠜
+            put("\u0411", new CharacterElement((char) 0x42));  // Б  : ⠃
+            put("\u0412", new CharacterElement((char) 0x57));  // В  : ⠺
+            put("\u0413", new CharacterElement((char) 0x47));  // Г  : ⠛
+            put("\u0414", new CharacterElement((char) 0x44));  // Д  : ⠙
+            put("\u0492", new CharacterElement((char) 0x5D));  // Ғ  : ⠻
+            put("\u0415", new CharacterElement((char) 0x45));  // Е  : ⠑
+            put("\u0401", new CharacterElement((char) 0x2A));  // Ё  : ⠡
+            put("\u0416", new CharacterElement((char) 0x4A));  // Ж  : ⠚
+            put("\u0417", new CharacterElement((char) 0x5A));  // З  : ⠵
+            put("\u0418", new CharacterElement((char) 0x49));  // И  : ⠊
+            put("\u0419", new CharacterElement((char) 0x26));  // Й  : ⠯
+            put("\u041a", new CharacterElement((char) 0x4B));  // К  : ⠅
+            put("\u049a", new CharacterElement((char) 0x59));  // Қ  : ⠽
+            put("\u041b", new CharacterElement((char) 0x4C));  // Л  : ⠇
+            put("\u041c", new CharacterElement((char) 0x4D));  // М  : ⠍
+            put("\u041d", new CharacterElement((char) 0x4E));  // Н  : ⠝
+            put("\u04a2", new CharacterElement((char) 0x25));  // Ң  : ⠩
+            put("\u041e", new CharacterElement((char) 0x4F));  // О  : ⠕
+            put("\u04e8", new CharacterElement((char) 0x3C));  // Ө  : ⠣
+            put("\u041f", new CharacterElement((char) 0x50));  // П  : ⠏
+            put("\u0420", new CharacterElement((char) 0x52));  // Р  : ⠗
+            put("\u0421", new CharacterElement((char) 0x53));  // С  : ⠎
+            put("\u0422", new CharacterElement((char) 0x54));  // Т  : ⠞
+            put("\u04ae", new CharacterElement((char) 0x2F));  // Ү  : ⠌
+            put("\u0423", new CharacterElement((char) 0x55));  // У  : ⠥
+            put("\u040e", new CharacterElement((char) 0x56));  // Ў  : ⠧
+            put("\u0424", new CharacterElement((char) 0x46));  // Ф  : ⠋
+            put("\u0425", new CharacterElement((char) 0x48));  // Х  : ⠓
+            put("\u04b2", new CharacterElement((char) 0x3F));  // Ҳ  : ⠹
+            put("\u0426", new CharacterElement((char) 0x43));  // Ц  : ⠉
+            put("\u0427", new CharacterElement((char) 0x51));  // Ч  : ⠟
+            put("\u0428", new CharacterElement((char) 0x3A));  // Ш  : ⠱
+            put("\u0429", new CharacterElement((char) 0x58));  // Щ  : ⠭
+            put("\u042a", new CharacterElement((char) 0x28));  // Ъ  : ⠷
+            put("\u042b", new CharacterElement((char) 0x21));  // Ы  : ⠮
+            put("\u042c", new CharacterElement((char) 0x29));  // Ь  : ⠾
+            put("\u042d", new CharacterElement((char) 0x5B));  // Э  : ⠪
+            put("\u042e", new CharacterElement((char) 0x5C));  // Ю  : ⠳
+            put("\u042f", new CharacterElement((char) 0x24));  // Я  : ⠫
+
+        }
+    };
 
     public static final Map<String, String> specialSignDictionary = new HashMap<String, String>() {
         {
@@ -136,8 +253,24 @@ public class TranslateDictionary {
             put("“", "\u2834\u2804");
         }
     };
+    public static final Map<String, CharacterGetter> specialSignDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            // special sign
+            put(".", new CharacterElement((char) 0x34)); // ⠲
+            put(",", new CharacterElement((char) 0x31)); // ⠂
+            put(":", new CharacterElement((char) 0x33)); // ⠒
+            put("\u2013", new CharacterElement((char) 0x2D)); // – ⠤
+            put("!", new CharacterElement((char) 0x36)); // ⠖
+            put("?", new CharacterElement((char) 0x35)); // ⠢
+            put("[", new CharacterList((Character[]) Arrays.asList((char) 0x2C, (char) 0x37).toArray())); // ⠠⠶
+            put("]", new CharacterList((Character[]) Arrays.asList((char) 0x37, (char) 0x2C).toArray())); // ⠶⠠
+            put("„", new CharacterList((Character[]) Arrays.asList((char) 0x2C, (char) 0x38).toArray())); // ⠠⠦
+            put("“", new CharacterList((Character[]) Arrays.asList((char) 0x30, (char) 0x27).toArray())); // ⠴⠄
+        }
+    };
 
     public static final String START_NUMBER_SIGN = "\u283c";
+    public static final CharacterGetter START_NUMBER_SIGN_ASC = new CharacterElement((char) 0x23);
     public static final Map<String, String> numberDictionary = new HashMap<String, String>() {
         {
             // number
@@ -154,6 +287,23 @@ public class TranslateDictionary {
 
         }
     };
+    public static final Map<String, CharacterGetter> numberDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            // number
+            put("1", new CharacterElement((char) 0x31));
+            put("2", new CharacterElement((char) 0x32));
+            put("3", new CharacterElement((char) 0x33));
+            put("4", new CharacterElement((char) 0x34));
+            put("5", new CharacterElement((char) 0x35));
+            put("6", new CharacterElement((char) 0x36));
+            put("7", new CharacterElement((char) 0x37));
+            put("8", new CharacterElement((char) 0x38));
+            put("9", new CharacterElement((char) 0x39));
+            put("0", new CharacterElement((char) 0x30));
+
+        }
+    };
+
 
     public static final String START_BIG_ALPHABET_SIGN = "\u2828";
     public static final Map<String, String> bigAlphabetDictionary = new HashMap<String, String>() {
@@ -202,55 +352,100 @@ public class TranslateDictionary {
             put("\u044f", "\u282b");
         }
     };
-//
-//    public static final Map<String, Character> smallAlphabetDictionaryAsc =
-//            new HashMap<String, Character>() {
-//        {
-//            // alphabet
-//            put("\u0410", (char) 65);  // А  : ⠁
-//            put("\u04d8", (char) 3E); // Ә  : ⠜
-//            put("\u0411", (char) );  // Б  : ⠃
-//            put("\u0412", (char) );  // В  : ⠺
-//            put("\u0413", (char) );  // Г  : ⠛
-//            put("\u0414", (char) );  // Д  : ⠙
-//            put("\u0492", (char) );  // Ғ  : ⠻
-//            put("\u0415", (char) );  // Е  : ⠑
-//            put("\u0401", (char) );  // Ё  : ⠡
-//            put("\u0416", (char) );  // Ж  : ⠚
-//            put("\u0417", (char) );  // З  : ⠵
-//            put("\u0418", (char) );  // И  : ⠊
-//            put("\u0419", (char) );  // Й  : ⠯
-//            put("\u041a", (char) );  // К  : ⠅
-//            put("\u049a", (char) );  // Қ  : ⠽
-//            put("\u041b", (char) );  // Л  : ⠇
-//            put("\u041c", (char) );  // М  : ⠍
-//            put("\u041d", (char) );  // Н  : ⠝
-//            put("\u04a2", (char) );  // Ң  : ⠩
-//            put("\u041e", (char) );  // О  : ⠕
-//            put("\u04e8", (char) );  // Ө  : ⠣
-//            put("\u041f", (char) );  // П  : ⠏
-//            put("\u0420", (char) );  // Р  : ⠗
-//            put("\u0421", (char) );  // С  : ⠎
-//            put("\u0422", (char) );  // Т  : ⠞
-//            put("\u04ae", (char) );  // Ү  : ⠌
-//            put("\u0423", (char) );  // У  : ⠥
-//            put("\u040e", (char) );  // Ў  : ⠧
-//            put("\u0424", (char) );  // Ф  : ⠋
-//            put("\u0425", (char) );  // Х  : ⠓
-//            put("\u04b2", (char) );  // Ҳ  : ⠹
-//            put("\u0426", (char) );  // Ц  : ⠉
-//            put("\u0427", (char) );  // Ч  : ⠟
-//            put("\u0428", (char) );  // Ш  : ⠱
-//            put("\u0429", (char) );  // Щ  : ⠭
-//            put("\u042a", (char) );  // Ъ  : ⠷
-//            put("\u042b", (char) );  // Ы  : ⠮
-//            put("\u042c", (char) );  // Ь  : ⠾
-//            put("\u042d", (char) );  // Э  : ⠪
-//            put("\u042e", (char) );  // Ю  : ⠳
-//            put("\u042f", (char) );  // Я  : ⠫
-//        }
-//    };
+    public static final Map<String, CharacterGetter> bigAlphabetDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            // alphabet
+            put("\u0430", new CharacterElement((char) 0x41));
+            put("\u04d9", new CharacterElement((char) 0x3E));
+            put("\u0431", new CharacterElement((char) 0x42));
+            put("\u0432", new CharacterElement((char) 0x57));
+            put("\u0433", new CharacterElement((char) 0x47));
+            put("\u0434", new CharacterElement((char) 0x44));
+            put("\u0493", new CharacterElement((char) 0x5D));
+            put("\u0435", new CharacterElement((char) 0x45));
+            put("\u0451", new CharacterElement((char) 0x2A));
+            put("\u0436", new CharacterElement((char) 0x4A));
+            put("\u0437", new CharacterElement((char) 0x5A));
+            put("\u0438", new CharacterElement((char) 0x49));
+            put("\u0439", new CharacterElement((char) 0x26));
+            put("\u043a", new CharacterElement((char) 0x4B));
+            put("\u049b", new CharacterElement((char) 0x59));
+            put("\u043b", new CharacterElement((char) 0x4C));
+            put("\u043c", new CharacterElement((char) 0x4D));
+            put("\u043d", new CharacterElement((char) 0x4E));
+            put("\u04a3", new CharacterElement((char) 0x25));
+            put("\u043e", new CharacterElement((char) 0x4F));
+            put("\u04e9", new CharacterElement((char) 0x3C));
+            put("\u043f", new CharacterElement((char) 0x50));
+            put("\u0440", new CharacterElement((char) 0x52));
+            put("\u0441", new CharacterElement((char) 0x53));
+            put("\u0442", new CharacterElement((char) 0x54));
+            put("\u04af", new CharacterElement((char) 0x2F));
+            put("\u0443", new CharacterElement((char) 0x55));
+            put("\u045e", new CharacterElement((char) 0x56));
+            put("\u0444", new CharacterElement((char) 0x46));
+            put("\u0445", new CharacterElement((char) 0x48));
+            put("\u04b3", new CharacterElement((char) 0x3F));
+            put("\u0446", new CharacterElement((char) 0x43));
+            put("\u0447", new CharacterElement((char) 0x51));
+            put("\u0448", new CharacterElement((char) 0x3A));
+            put("\u0449", new CharacterElement((char) 0x58));
+            put("\u044a", new CharacterElement((char) 0x28));
+            put("\u044b", new CharacterElement((char) 0x21));
+            put("\u044c", new CharacterElement((char) 0x29));
+            put("\u044d", new CharacterElement((char) 0x5B));
+            put("\u044e", new CharacterElement((char) 0x5C));
+            put("\u044f", new CharacterElement((char) 0x24));
+        }
+    };
 
+
+    public static final Map<String, CharacterGetter> smallAlphabetDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            // alphabet
+            put("\u0410", new CharacterElement((char) 0x41));  // А  : ⠁
+            put("\u04d8", new CharacterElement((char) 0x3E)); // Ә  : ⠜
+            put("\u0411", new CharacterElement((char) 0x42));  // Б  : ⠃
+            put("\u0412", new CharacterElement((char) 0x57));  // В  : ⠺
+            put("\u0413", new CharacterElement((char) 0x47));  // Г  : ⠛
+            put("\u0414", new CharacterElement((char) 0x44));  // Д  : ⠙
+            put("\u0492", new CharacterElement((char) 0x5D));  // Ғ  : ⠻
+            put("\u0415", new CharacterElement((char) 0x45));  // Е  : ⠑
+            put("\u0401", new CharacterElement((char) 0x2A));  // Ё  : ⠡
+            put("\u0416", new CharacterElement((char) 0x4A));  // Ж  : ⠚
+            put("\u0417", new CharacterElement((char) 0x5A));  // З  : ⠵
+            put("\u0418", new CharacterElement((char) 0x49));  // И  : ⠊
+            put("\u0419", new CharacterElement((char) 0x26));  // Й  : ⠯
+            put("\u041a", new CharacterElement((char) 0x4B));  // К  : ⠅
+            put("\u049a", new CharacterElement((char) 0x59));  // Қ  : ⠽
+            put("\u041b", new CharacterElement((char) 0x4C));  // Л  : ⠇
+            put("\u041c", new CharacterElement((char) 0x4D));  // М  : ⠍
+            put("\u041d", new CharacterElement((char) 0x4E));  // Н  : ⠝
+            put("\u04a2", new CharacterElement((char) 0x25));  // Ң  : ⠩
+            put("\u041e", new CharacterElement((char) 0x4F));  // О  : ⠕
+            put("\u04e8", new CharacterElement((char) 0x3C));  // Ө  : ⠣
+            put("\u041f", new CharacterElement((char) 0x50));  // П  : ⠏
+            put("\u0420", new CharacterElement((char) 0x52));  // Р  : ⠗
+            put("\u0421", new CharacterElement((char) 0x53));  // С  : ⠎
+            put("\u0422", new CharacterElement((char) 0x54));  // Т  : ⠞
+            put("\u04ae", new CharacterElement((char) 0x2F));  // Ү  : ⠌
+            put("\u0423", new CharacterElement((char) 0x55));  // У  : ⠥
+            put("\u040e", new CharacterElement((char) 0x56));  // Ў  : ⠧
+            put("\u0424", new CharacterElement((char) 0x46));  // Ф  : ⠋
+            put("\u0425", new CharacterElement((char) 0x48));  // Х  : ⠓
+            put("\u04b2", new CharacterElement((char) 0x3F));  // Ҳ  : ⠹
+            put("\u0426", new CharacterElement((char) 0x43));  // Ц  : ⠉
+            put("\u0427", new CharacterElement((char) 0x51));  // Ч  : ⠟
+            put("\u0428", new CharacterElement((char) 0x3A));  // Ш  : ⠱
+            put("\u0429", new CharacterElement((char) 0x58));  // Щ  : ⠭
+            put("\u042a", new CharacterElement((char) 0x28));  // Ъ  : ⠷
+            put("\u042b", new CharacterElement((char) 0x21));  // Ы  : ⠮
+            put("\u042c", new CharacterElement((char) 0x29));  // Ь  : ⠾
+            put("\u042d", new CharacterElement((char) 0x5B));  // Э  : ⠪
+            put("\u042e", new CharacterElement((char) 0x5C));  // Ю  : ⠳
+            put("\u042f", new CharacterElement((char) 0x24));  // Я  : ⠫
+        }
+    };
     public static final Map<String, String> smallAlphabetDictionaryUni = new HashMap<String, String>() {
         {
             // alphabet
@@ -298,10 +493,4 @@ public class TranslateDictionary {
         }
     };
 
-    public static void main(String[] args) throws IOException {
-        System.out.println();
-        try(FileWriter myWriter = new FileWriter("dictionary.txt")) {
-            myWriter.write(StringUtils.join("\u282b", "\n"));
-        }
-    }
 }
