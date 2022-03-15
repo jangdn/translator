@@ -59,6 +59,7 @@ public class TranslateDictionary {
 
         }
     };
+
     public static final Map<String, CharacterGetter> numberDictionaryAsc = new HashMap<String, CharacterGetter>() {
         {
             // number
@@ -76,6 +77,41 @@ public class TranslateDictionary {
         }
     };
 
+    public static final Map<String, String> romeNumberDictionaryUni = new HashMap<String, String>() {
+        {
+            // number
+            put("I", "\u2801");
+            put("II", "\u2803");
+            put("III", "\u2809");
+            put("IV", "\u2819");
+            put("V", "\u2811");
+            put("VI", "\u280b");
+            put("VII", "\u281b");
+            put("VIII", "\u2813");
+            put("IX", "\u280a");
+            put("X", "\u2801\u281a");
+            put("XI", "\u2801\u2801");
+            put("XII", "\u2801\u2803");
+        }
+    };
+
+    public static final Map<String, CharacterGetter> romeNumberDictionaryAsc = new HashMap<String, CharacterGetter>() {
+        {
+            // number
+            put("I", new CharacterElement((char) 0x31));
+            put("II", new CharacterElement((char) 0x32));
+            put("III", new CharacterElement((char) 0x33));
+            put("IV", new CharacterElement((char) 0x34));
+            put("V", new CharacterElement((char) 0x35));
+            put("VI", new CharacterElement((char) 0x36));
+            put("VII", new CharacterElement((char) 0x37));
+            put("VIII", new CharacterElement((char) 0x38));
+            put("IX", new CharacterElement((char) 0x39));
+            put("X", new CharacterList((Character[]) Arrays.asList((char) 0x31, (char) 0x30).toArray()));
+            put("XI", new CharacterList((Character[]) Arrays.asList((char) 0x31, (char) 0x31).toArray()));
+            put("XII", new CharacterList((Character[]) Arrays.asList((char) 0x31, (char) 0x31).toArray()));
+        }
+    };
 
     public static final String START_BIG_ALPHABET_SIGN = "\u2828";
     public static final Map<String, String> bigAlphabetDictionaryUni = new HashMap<String, String>() {
@@ -272,6 +308,7 @@ public class TranslateDictionary {
             this.putAll(numberDictionaryUni);
             this.putAll(smallAlphabetDictionaryUni);
             this.putAll(bigAlphabetDictionaryUni);
+            this.putAll(romeNumberDictionaryUni);
         }
     };
     public static final Map<String, CharacterGetter> totalDictionaryAsc = new HashMap<String, CharacterGetter>() {
@@ -281,6 +318,7 @@ public class TranslateDictionary {
             this.putAll(numberDictionaryAsc);
             this.putAll(smallAlphabetDictionaryAsc);
             this.putAll(bigAlphabetDictionaryAsc);
+            this.putAll(romeNumberDictionaryAsc);
         }
     };
 }

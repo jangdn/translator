@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class Convertor {
 
-    private static final String DEFINED_CONVERT_TARGET = "mat-test.json";
+    private static final String DEFINED_CONVERT_TARGET = "32JON.json";
 
     public static void main(String[] args) throws IOException {
         convert();
@@ -50,15 +50,6 @@ public class Convertor {
         System.out.println(System.currentTimeMillis() - startTime);
 
         String translateParagraph = CharArrayTranslator.translate(paragraphString);
-//        TranslateHandler translateHandler = TranslateHandler.getInstance();
-//        List<BrailleParagraph> brailleParagraphs = paragraphs.parallelStream()
-//                .map(paragraph -> translateHandler.translate(paragraph))
-//                .collect(Collectors.toList());
-//
-//        StringBuilder brailleBuilder = new StringBuilder();
-//        for (BrailleParagraph brailleParagraph : brailleParagraphs) {
-//            brailleBuilder.append(brailleParagraph.toString());
-//        }
 
         try(FileWriter myWriter = new FileWriter("brailleParagraphs.txt")) {
             myWriter.write(LineConverter.convert(translateParagraph));

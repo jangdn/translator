@@ -1,5 +1,7 @@
 package act.translator;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class CharArrayTranslator {
     public static String translate(String input) {
         if(input.isEmpty()) {
@@ -8,16 +10,30 @@ public class CharArrayTranslator {
 
         char beforeValue = input.charAt(0);
         StringBuilder builder = new StringBuilder();
+        String romeNum = "";
         appendBraille(builder, beforeValue);
         char[] chars = input.substring(1).toCharArray();
         for (char c : chars) {
-            translateOnChar(beforeValue, builder, c);
+            if (isRomeNum(c)) {
+                romeNum += c;
+                continue;
+            }
+            if (!StringUtils.isEmpty(romeNum)) {
+                translateOnString(romeNum, builder);
+                romeNum="";
+                continue;
+            }
+            translateOnChar(c, beforeValue, builder);
             beforeValue = c;
         }
         return builder.toString();
     }
 
-    public static void translateOnChar(char beforeValue, StringBuilder builder, char c) {
+    private static void translateOnString(String romeNum, StringBuilder builder) {
+        builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(romeNum)).getString());
+    }
+
+    public static void translateOnChar(char c, char beforeValue, StringBuilder builder) {
         if (isNumber(c)) {
             if (continuouslyNumberEscape(beforeValue, c)) {
                 builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
@@ -32,6 +48,10 @@ public class CharArrayTranslator {
             return;
         }
         builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
+    }
+
+    private static boolean isRomeNum(char c) {
+        return TranslateDictionary.romeNumberDictionaryAsc.keySet().contains(String.valueOf(c));
     }
 
     private static boolean newLineEscape(char c) {

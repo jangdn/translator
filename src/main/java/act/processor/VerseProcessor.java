@@ -5,33 +5,14 @@ import model.input.VerseInputParagraph;
 import model.process.VerseParagraph;
 
 public class VerseProcessor implements Processor<VerseInputParagraph> {
-    private final ContentConvertorChain startChanContentConvertorChain;
+    private final FixAndConvertChains fixAndConvertChains;
 
-    private VerseProcessor(ConvertShapSign convertShapSign,
-                           ConvertQuoteSign convertQuoteSign,
-                           ConvertSquareBrackets convertSquareBrackets,
-                           ConvertParenthesisToHyphen convertParenthesisToHyphen,
-                           ConvertSemiCloneToRest convertSemiCloneToRest,
-                           ConvertHyphenToBaseHyphen convertHyphenToBaseHyphen,
-                           FixStrangeString fixStrangeString) {
-        this.startChanContentConvertorChain = convertShapSign;
-        convertShapSign.setNext(convertQuoteSign);
-        convertQuoteSign.setNext(convertSquareBrackets);
-        convertSquareBrackets.setNext(convertParenthesisToHyphen);
-        convertParenthesisToHyphen.setNext(convertSemiCloneToRest);
-        convertSemiCloneToRest.setNext(convertHyphenToBaseHyphen);
-        convertHyphenToBaseHyphen.setNext(fixStrangeString);
+    private VerseProcessor(){
+        this.fixAndConvertChains = FixAndConvertChains.getInstance();
     }
 
     private static class LazyHolder {
-        public static final VerseProcessor INSTANCE =
-                new VerseProcessor(ConvertShapSign.getInstance(),
-                        ConvertQuoteSign.getInstance(),
-                        ConvertSquareBrackets.getInstance(),
-                        ConvertParenthesisToHyphen.getInstance(),
-                        ConvertSemiCloneToRest.getInstance(),
-                        ConvertHyphenToBaseHyphen.getInstance(),
-                        FixStrangeString.getInstance());
+        public static final VerseProcessor INSTANCE = new VerseProcessor();
     }
 
     public static VerseProcessor getInstance() {
@@ -39,7 +20,7 @@ public class VerseProcessor implements Processor<VerseInputParagraph> {
     }
 
     public VerseParagraph process(VerseInputParagraph inputParagraph) {
-        return new VerseParagraph(this.startChanContentConvertorChain.process(inputParagraph.getValue()),
+        return new VerseParagraph(this.fixAndConvertChains.getChain().process(inputParagraph.getValue()),
                 inputParagraph.getNum());
     }
 
