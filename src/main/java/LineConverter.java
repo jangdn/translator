@@ -32,16 +32,4 @@ public class LineConverter {
         }
         return builder.toString();
     }
-
-    public static StringBuilder removeLastNewLineRecursive(StringBuilder builder, int index) {
-        if (!isNewLine(builder.charAt(index))) {
-            return builder;
-        }
-
-        return removeLastNewLineRecursive(builder.deleteCharAt(index), index-1);
-    }
-
-    private static boolean isNewLine(char c) {
-        return c == '\n';
-    }
 }
