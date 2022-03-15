@@ -1,7 +1,5 @@
 package act.processor.contentchain;
 
-import act.processor.OutlineProcessor;
-
 public class FixAndConvertChains {
     private final ContentConvertorChain startChanContentConvertorChain;
 
@@ -11,8 +9,8 @@ public class FixAndConvertChains {
                                 ConvertParenthesisToHyphen convertParenthesisToHyphen,
                                 ConvertSemiCloneToRest convertSemiCloneToRest,
                                 ConvertHyphenToBaseHyphen convertHyphenToBaseHyphen,
-                                FixStrangeString fixStrangeString,
-                                FixStrangeLastNewLine fixStrangeLastNewLine) {
+                                FixStrangeLastNewLine fixStrangeString,
+                                FixStrangeString fixStrangeLastNewLine) {
         this.startChanContentConvertorChain = convertShapSign;
         convertShapSign.setNext(convertQuoteSign);
         convertQuoteSign.setNext(convertSquareBrackets);
@@ -31,8 +29,8 @@ public class FixAndConvertChains {
                         ConvertParenthesisToHyphen.getInstance(),
                         ConvertSemiCloneToRest.getInstance(),
                         ConvertHyphenToBaseHyphen.getInstance(),
-                        FixStrangeString.getInstance(),
-                        FixStrangeLastNewLine.getInstance());
+                        FixStrangeLastNewLine.getInstance(),
+                        FixStrangeString.getInstance());
     }
 
     public static FixAndConvertChains getInstance() {

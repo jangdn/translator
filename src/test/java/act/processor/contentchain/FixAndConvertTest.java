@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class FixAndConvertTest {
     @Test
     public void lineRemover() {
-        String removedNewLineString = FixStrangeString.getInstance().process("is last newLine removed?\n\n\n");
+        String removedNewLineString = FixStrangeLastNewLine.getInstance().process("is last newLine removed?\n\n\n");
 
         assertThat(removedNewLineString, is("is last newLine removed?"));
     }
