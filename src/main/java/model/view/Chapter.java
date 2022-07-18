@@ -10,6 +10,6 @@ public interface Chapter extends ViewPattern {
 
     @Override
     default String getNext() {
-        return NEW_LINE;
+        return NEW_LINE + NEW_LINE;
     }
 }

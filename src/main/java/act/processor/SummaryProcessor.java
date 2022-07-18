@@ -21,8 +21,8 @@ public class SummaryProcessor implements Processor<SummaryInputParagraph>{
     }
 
     public Paragraph process(SummaryInputParagraph inputParagraph) {
-        return new SummaryParagraph(this.fixAndConvertChains.getChain().process(inputParagraph.getSubtitle()),
-                this.fixAndConvertChains.getChain().process(inputParagraph.getTitle()));
+        return new SummaryParagraph(this.fixAndConvertChains.getChain().process(inputParagraph.getTitle()),
+                this.fixAndConvertChains.getChain().process(inputParagraph.getSubtitle()));
     }
 
     @Override

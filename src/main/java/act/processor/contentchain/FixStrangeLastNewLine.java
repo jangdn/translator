@@ -23,6 +23,9 @@ public class FixStrangeLastNewLine implements ContentConvertorChain {
     }
 
     public static StringBuilder removeLastNewLineRecursive(StringBuilder builder, int index) {
+        if (index == -1)
+            return builder;
+
         if (!isNewLine(builder.charAt(index))) {
             return builder;
         }

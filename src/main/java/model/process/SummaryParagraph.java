@@ -1,6 +1,7 @@
 package model.process;
 
 import model.view.Summary;
+import org.apache.commons.lang3.StringUtils;
 
 public class SummaryParagraph extends Paragraph implements Summary {
     private String title;
@@ -14,6 +15,12 @@ public class SummaryParagraph extends Paragraph implements Summary {
 
     @Override
     protected String internalToString() {
+        if (StringUtils.isEmpty(this.title)) {
+            return this.subtitle;
+        }
+        if (StringUtils.isEmpty(this.subtitle)) {
+            return this.title;
+        }
         return this.title + '\n' + this.subtitle;
     }
 }
