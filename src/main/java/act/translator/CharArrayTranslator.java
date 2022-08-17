@@ -1,10 +1,11 @@
 package act.translator;
 
+import act.translator.character.CharacterGetter;
 import org.apache.commons.lang3.StringUtils;
 
 public class CharArrayTranslator {
     public static String translate(String input) {
-        if(input.isEmpty()) {
+        if (input.isEmpty()) {
             return "";
         }
 
@@ -20,7 +21,7 @@ public class CharArrayTranslator {
             }
             if (!StringUtils.isEmpty(romeNum)) {
                 translateOnString(romeNum, builder);
-                romeNum="";
+                romeNum = "";
                 continue;
             }
             translateOnChar(c, beforeValue, builder);
@@ -47,7 +48,12 @@ public class CharArrayTranslator {
             builder.append(c);
             return;
         }
-        builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
+        CharacterGetter characterGetter = TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c));
+        if (characterGetter == null) {
+            builder.append("$$$$");
+            return;
+        }
+        builder.append(characterGetter.getString());
     }
 
     private static boolean isRomeNum(char c) {
@@ -62,7 +68,7 @@ public class CharArrayTranslator {
         if (isNumber(c)) {
             builder.append(TranslateDictionary.START_NUMBER_SIGN_ASC.getString());
             builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
-            return ;
+            return;
         }
         builder.append(TranslateDictionary.totalDictionaryAsc.get(String.valueOf(c)).getString());
     }
