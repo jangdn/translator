@@ -9,7 +9,7 @@ public class FixAndConvertChains {
                                 ConvertParenthesisToHyphen convertParenthesisToHyphen,
                                 ConvertSemiCloneToRest convertSemiCloneToRest,
                                 ConvertHyphenToBaseHyphen convertHyphenToBaseHyphen,
-                                FixStrangeLastNewLine fixStrangeString,
+//                                FixStrangeLastNewLine fixStrangeString,
                                 FixStrangeString fixStrangeLastNewLine) {
         this.startChanContentConvertorChain = convertShapSign;
         convertShapSign.setNext(convertQuoteSign);
@@ -17,8 +17,8 @@ public class FixAndConvertChains {
         convertSquareBrackets.setNext(convertParenthesisToHyphen);
         convertParenthesisToHyphen.setNext(convertSemiCloneToRest);
         convertSemiCloneToRest.setNext(convertHyphenToBaseHyphen);
-        convertHyphenToBaseHyphen.setNext(fixStrangeString);
-        fixStrangeString.setNext(fixStrangeLastNewLine);
+//        convertHyphenToBaseHyphen.setNext(fixStrangeString);
+        convertHyphenToBaseHyphen.setNext(fixStrangeLastNewLine);
     }
 
     private static class LazyHolder {
@@ -29,7 +29,7 @@ public class FixAndConvertChains {
                         ConvertParenthesisToHyphen.getInstance(),
                         ConvertSemiCloneToRest.getInstance(),
                         ConvertHyphenToBaseHyphen.getInstance(),
-                        FixStrangeLastNewLine.getInstance(),
+//                        FixStrangeLastNewLine.getInstance(),
                         FixStrangeString.getInstance());
     }
 

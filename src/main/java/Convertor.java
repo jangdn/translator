@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 
 public class Convertor {
 
-    private static final String DEFINED_CONVERT_TARGET = "01GEN-copy.json";
+    private static final String DEFINED_CONVERT_TARGET = "main-test.json";
 
     public static void main(String[] args) throws IOException {
         convert(args[0]);
